@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOBJACK – Merchandiser Ideal Profile | Subject Matter Expert Insights</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+:root {
+  --g50:#f0fdf4;--g100:#dcfce7;--g200:#bbf7d0;--g300:#86efac;
+  --g400:#4ade80;--g500:#22c55e;--g600:#16a34a;--g700:#166534;
+  --g800:#14532d;--g900:#0d3320;
+  --gray50:#f8fafc;--gray100:#f1f5f9;--gray200:#e2e8f0;--gray300:#cbd5e1;
+  --gray400:#94a3b8;--gray500:#64748b;--gray600:#475569;--gray700:#334155;--gray800:#1e293b;
+  --danger:#dc2626;--danger-light:#fee2e2;
+  --warn:#d97706;--warn-light:#fef3c7;
+  --white:#ffffff;
+  --shadow:0 1px 3px rgba(0,0,0,0.07),0 4px 16px rgba(0,0,0,0.05);
+  --radius:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:14px;}
+body{font-family:'DM Sans',sans-serif;background:var(--gray50);color:var(--gray800);line-height:1.6;}
+
+/* ── HEADER ── */
+.hdr{background:var(--g800);position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-inner{max-width:860px;margin:0 auto;padding:36px 32px 32px;position:relative;z-index:1;}
+.logo-row{display:flex;align-items:center;gap:11px;margin-bottom:20px;}
+.logo-txt{font-size:17px;font-weight:600;letter-spacing:0.2px;}
+.logo-txt .job{color:var(--g400);}
+.logo-txt .jack{color:white;}
+.hdr-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px;}
+.hdr h1{font-size:21px;font-weight:600;color:white;letter-spacing:-0.3px;margin-bottom:14px;line-height:1.2;}
+.hdr-intro{font-size:13px;line-height:1.75;color:rgba(255,255,255,0.78);max-width:680px;border-left:3px solid var(--g400);border-radius:0 6px 6px 0;background:rgba(255,255,255,0.06);padding:11px 16px;}
+
+/* ── MAIN ── */
+main{max-width:860px;margin:0 auto;padding:24px 32px 80px;}
+
+/* ── SECTION CARDS ── */
+.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--gray200);box-shadow:var(--shadow);margin-bottom:18px;overflow:hidden;}
+.card-hdr{background:var(--g50);border-bottom:1.5px solid var(--g200);padding:12px 20px;display:flex;align-items:center;gap:10px;}
+.card-num{width:22px;height:22px;border-radius:50%;background:var(--g700);color:white;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.card-title{font-size:13px;font-weight:600;color:var(--g800);}
+.card-body{padding:20px;}
+
+/* ── FORM FIELDS ── */
+.field-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.field{display:flex;flex-direction:column;gap:5px;}
+label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray500);}
+input[type=text],textarea{border:1px solid var(--gray300);border-radius:6px;padding:7px 11px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--gray800);background:var(--white);width:100%;transition:border-color .2s,box-shadow .2s;resize:vertical;}
+input[type=text]:focus,textarea:focus{outline:none;border-color:var(--g600);box-shadow:0 0 0 3px rgba(22,163,74,0.1);}
+textarea{min-height:86px;}
+.err-msg{display:none;color:var(--danger);font-size:11px;margin-top:2px;}
+.field.has-err input,.field.has-err textarea{border-color:var(--danger);}
+.field.has-err .err-msg{display:block;}
+
+/* ── QUESTIONS ── */
+.q-list{display:flex;flex-direction:column;}
+.q-item{padding:16px 0;border-bottom:1px solid var(--gray200);}
+.q-item:first-child{padding-top:2px;}
+.q-item:last-child{border-bottom:none;padding-bottom:2px;}
+.q-lbl{font-size:13px;font-weight:500;color:var(--gray800);margin-bottom:9px;line-height:1.5;}
+.q-num{display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--g50);border:1px solid var(--g200);color:var(--g700);font-size:10px;font-weight:600;align-items:center;justify-content:center;vertical-align:middle;margin-right:8px;flex-shrink:0;}
+
+/* ── DRAG AND DROP ── */
+.dnd-intro{font-size:13px;color:var(--gray500);margin-bottom:16px;line-height:1.6;}
+.dnd-layout{display:grid;grid-template-columns:196px 1fr;gap:14px;}
+.pool{background:var(--gray50);border:1.5px dashed var(--gray300);border-radius:var(--radius);padding:10px;min-height:260px;}
+.pool-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray400);margin-bottom:8px;}
+.buckets{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.bucket{border-radius:var(--radius);border:1px solid var(--gray200);background:var(--white);min-height:120px;transition:border-color .2s,background .2s;}
+.bucket.drag-over{border-color:var(--g600);background:var(--g50);}
+.bkt-hdr{padding:8px 10px 7px;border-bottom:1px solid var(--gray100);display:flex;align-items:center;gap:7px;}
+.bkt-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.bkt-name{font-size:11px;font-weight:600;color:var(--gray700);}
+.bkt-cnt{margin-left:auto;font-size:11px;font-family:'DM Mono',monospace;color:var(--gray400);}
+.bkt-range{color:var(--gray300);font-size:10px;}
+.bkt-body{padding:7px;min-height:80px;display:flex;flex-direction:column;gap:4px;}
+.bkt-ph{font-size:11px;color:var(--gray400);text-align:center;padding:14px 8px;font-style:italic;}
+
+/* bucket accent colours */
+.b-crucial .bkt-dot{background:var(--g700);}
+.b-crucial .bkt-hdr{background:var(--g50);}
+.b-important .bkt-dot{background:#2563eb;}
+.b-important .bkt-hdr{background:#eff6ff;}
+.b-somewhat .bkt-dot{background:var(--warn);}
+.b-somewhat .bkt-hdr{background:var(--warn-light);}
+.b-not .bkt-dot{background:var(--gray400);}
+.b-not .bkt-hdr{background:var(--gray50);}
+
+/* ── CHIPS ── */
+.chip-wrap{position:relative;display:inline-flex;width:100%;}
+.chip{background:var(--white);border:1px solid var(--gray200);border-radius:20px;padding:4px 9px;font-size:12px;font-weight:500;color:var(--gray700);cursor:grab;user-select:none;display:flex;align-items:center;gap:5px;transition:border-color .15s,box-shadow .15s,opacity .15s;position:relative;width:100%;}
+.chip:hover{border-color:var(--g600);box-shadow:0 2px 6px rgba(22,163,74,0.12);}
+.chip.dragging{opacity:0.35;}
+.chip.in-bucket{background:var(--g50);border-color:var(--g300);color:var(--g800);}
+.drag-icon{width:12px;height:12px;color:var(--gray400);flex-shrink:0;}
+
+/* ── TOOLTIP ── */
+.chip-i{width:14px;height:14px;border-radius:50%;background:var(--gray200);color:var(--gray500);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:help;flex-shrink:0;margin-left:auto;}
+.tip{display:none;position:absolute;bottom:calc(100% + 7px);left:0;background:var(--gray800);color:white;font-size:12px;line-height:1.5;padding:8px 12px;border-radius:6px;width:250px;z-index:200;pointer-events:none;font-weight:400;}
+.tip::after{content:'';position:absolute;top:100%;left:14px;border:5px solid transparent;border-top-color:var(--gray800);}
+.chip:hover .tip{display:block;}
+
+/* ── WARN ── */
+.limit-warn{font-size:11px;color:var(--warn);display:none;margin-top:6px;}
+
+/* ── SUBMIT ── */
+.submit-area{text-align:center;padding:24px 0 16px;}
+.btn-submit{background:var(--g700);color:white;border:none;border-radius:6px;padding:10px 40px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:background .2s,transform .1s;letter-spacing:0.1px;}
+.btn-submit:hover{background:var(--g800);}
+.btn-submit:active{transform:scale(0.98);}
+.submit-note{margin-top:10px;font-size:11px;color:var(--gray400);}
+
+/* ── SUCCESS ── */
+.success-screen{display:none;text-align:center;padding:52px 32px;background:var(--white);border-radius:var(--radius);border:1px solid var(--gray200);box-shadow:var(--shadow);margin-top:28px;}
+.success-icon{width:52px;height:52px;border-radius:50%;background:var(--g50);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+.success-icon svg{width:26px;height:26px;stroke:var(--g600);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.success-title{font-size:19px;font-weight:600;color:var(--g800);margin-bottom:8px;letter-spacing:-0.2px;}
+.success-sub{color:var(--gray500);font-size:13px;}
+
+@media(max-width:640px){
+  .field-row{grid-template-columns:1fr;}
+  .dnd-layout{grid-template-columns:1fr;}
+  .buckets{grid-template-columns:1fr;}
+  main{padding:16px 16px 60px;}
+  .hdr-inner{padding:24px 16px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="logo-row">
+      <div class="logo-txt"><span class="job">JOB</span><span class="jack">JACK</span></div>
+    </div>
+    <div class="hdr-eyebrow">Subject Matter Expert Insights</div>
+    <h1>Merchandiser Ideal Profile</h1>
+    <p class="hdr-intro">This survey collects your professional insights to help us define what a truly successful Merchandiser looks like in the South African context. Your input will be combined with psychometric data analysis to build an <strong style="color:rgba(255,255,255,0.95)">Ideal Profile</strong>. An Ideal Profile is a benchmark that describes the cognitive abilities and behavioural traits most predictive of high performance in the role, enabling more precise and evidence-based candidate matching.</p>
+  </div>
+</div>
+
+<main id="mainContent">
+
+  <!-- 1: YOUR DETAILS -->
+  <div class="card">
+    <div class="card-hdr">
+      <div class="card-num">1</div>
+      <div class="card-title">Your Details</div>
+    </div>
+    <div class="card-body">
+      <div class="field-row">
+        <div class="field" id="f-name">
+          <label for="sme-name">Full Name and Surname</label>
+          <input type="text" id="sme-name" placeholder="e.g. Jane Smith">
+          <span class="err-msg">Please enter your full name and surname.</span>
+        </div>
+        <div class="field" id="f-role">
+          <label for="sme-role">Role / Title</label>
+          <input type="text" id="sme-role" placeholder="e.g. Regional Sales Manager">
+          <span class="err-msg">Please enter your role.</span>
+        </div>
+        <div class="field" id="f-company">
+          <label for="sme-company">Company</label>
+          <input type="text" id="sme-company" placeholder="e.g. Pick n Pay">
+          <span class="err-msg">Please enter your company.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2: QUALITATIVE INSIGHTS -->
+  <div class="card">
+    <div class="card-hdr">
+      <div class="card-num">2</div>
+      <div class="card-title">Qualitative Insights — The Role in Your Experience</div>
+    </div>
+    <div class="card-body">
+      <div class="q-list">
+
+        <div class="q-item">
+          <div class="q-lbl"><span class="q-num">1</span>Think about your <strong>best Merchandiser</strong>. What made them stand out from other candidates?</div>
+          <div class="field" id="f-q1">
+            <textarea id="q1" placeholder="What did they do differently that made them exceptional?"></textarea>
+            <span class="err-msg">Please share your thoughts on this question.</span>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-lbl"><span class="q-num">2</span>Think about the <strong>worst Merchandiser</strong> you have ever come across. Why did they not meet your expectations?</div>
+          <div class="field" id="f-q2">
+            <textarea id="q2" placeholder="What specific behaviours or gaps led to their underperformance?"></textarea>
+            <span class="err-msg">Please share your thoughts on this question.</span>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-lbl"><span class="q-num">3</span>What are your <strong>non-negotiables</strong> when you interview a Merchandiser candidate?</div>
+          <div class="field" id="f-q3">
+            <textarea id="q3" placeholder="What must a candidate demonstrate or possess for you to consider them for the role?"></textarea>
+            <span class="err-msg">Please share your thoughts on this question.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 3: COGNITIVE ABILITIES -->
+  <div class="card">
+    <div class="card-hdr">
+      <div class="card-num">3</div>
+      <div class="card-title">Cognitive Abilities — Drag to Categorise</div>
+    </div>
+    <div class="card-body">
+      <p class="dnd-intro">Drag each cognitive ability into the bucket that best reflects how important it is for a successful Merchandiser. You must place all abilities. Hover over any item to read its definition. <em>No per-bucket limit applies to this section.</em></p>
+      <div class="dnd-layout">
+        <div class="pool" id="pool-ability" data-pool="ability">
+          <div class="pool-lbl">Abilities to sort</div>
+        </div>
+        <div class="buckets">
+          <div class="bucket b-crucial" id="bucket-ability-crucial" data-bucket="crucial" data-pool="ability">
+            <div class="bkt-hdr"><div class="bkt-dot"></div><div class="bkt-name">Crucial for the role</div></div>
+            <div class="bkt-body"><div class="bkt-ph">Drop here</div></div>
+          </div>
+          <div class="bucket b-important" id="bucket-ability-important" data-bucket="important" data-pool="ability">
+            <div class="bkt-hdr"><div class="bkt-dot"></div><div class="bkt-name">Important for the role</div></div>
+            <div class="bkt-body"><div class="bkt-ph">Drop here</div></div>
+          </div>
+          <div class="bucket b-somewhat" id="bucket-ability-somewhat" data-bucket="somewhat" data-pool="ability">
+            <div class="bkt-hdr"><div class="bkt-dot"></div><div class="bkt-name">Somewhat important</div></div>
+            <div class="bkt-body"><div class="bkt-ph">Drop here</div></div>
+          </div>
+          <div class="bucket b-not" id="bucket-ability-not" data-bucket="not" data-pool="ability">
+            <div class="bkt-hdr"><div class="bkt-dot"></div><div class="bkt-name">Not important</div></div>
+            <div class="bkt-body"><div class="bkt-ph">Drop here</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="limit-warn" id="warn-ability">Please categorise all abilities before submitting.</div>
+    </div>
+  </div>
+
+  <!-- 4: BEHAVIOURAL TRAITS -->
+  <div class="card">
+    <div class="card-hdr">
+      <div class="card-num">4</div>
+      <div class="card-title">Behavioural Traits — Drag to Categorise</div>
+    </div>
+    <div class="card-body">
+      <p class="dnd-intro">Drag each behavioural trait into the bucket that best reflects its importance for the Merchandiser role. Aim for <strong>6–10 traits</strong> in each bucket — this is a guide, not a hard limit. Hover over any item to read its definition. You must categorise all traits.</p>
+      <div class="dnd-layout">
+        <div class="pool" id="pool-trait" data-pool="trait">
+          <div class="pool-lbl">Traits to sort</div>
+        </div>
+        <div class="buckets">
+          <div class="bucket b-crucial" id="bucket-trait-crucial" data-bucket="crucial" data-pool="trait">
+            <div class="bkt-hdr"><div class="bkt-dot"></div><div class="bkt-name">Crucial for the role</div><div class="bkt-cnt" id="cnt-crucial">0 <span class="bkt-range">/ 6–10</span></div></div>
+            <div class="bkt-body"><div class="bkt-ph">Drop here (ideally 6–10)</div></div>
+          </div>
+          <div class="bucket b-important" id="bucket-trait-important" data-bucket="important" data-pool="trait">
+            <div class="bkt-hdr"><div class="bkt-dot"></div><div class="bkt-name">Important for the role</div><div class="bkt-cnt" id="cnt-important">0 <span class="bkt-range">/ 6–10</span></div></div>
+            <div class="bkt-body"><div class="bkt-ph">Drop here (ideally 6–10)</div></div>
+          </div>
+          <div class="bucket b-somewhat" id="bucket-trait-somewhat" data-bucket="somewhat" data-pool="trait">
+            <div class="bkt-hdr"><div class="bkt-dot"></div><div class="bkt-name">Somewhat important</div><div class="bkt-cnt" id="cnt-somewhat">0 <span class="bkt-range">/ 6–10</span></div></div>
+            <div class="bkt-body"><div class="bkt-ph">Drop here (ideally 6–10)</div></div>
+          </div>
+          <div class="bucket b-not" id="bucket-trait-not" data-bucket="not" data-pool="trait">
+            <div class="bkt-hdr"><div class="bkt-dot"></div><div class="bkt-name">Not important</div><div class="bkt-cnt" id="cnt-not">0 <span class="bkt-range">/ 6–10</span></div></div>
+            <div class="bkt-body"><div class="bkt-ph">Drop here (ideally 6–10)</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="limit-warn" id="warn-trait">Please categorise all traits before submitting.</div>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-area">
+    <button class="btn-submit" onclick="submitForm()">Submit My Ideal Profile Input</button>
+    <p class="submit-note">Your responses are confidential and used for research purposes only.</p>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <div class="success-title">Thank you for your contribution!</div>
+    <p class="success-sub">Your insights have been recorded and will be combined with psychometric data to build the Merchandiser Ideal Profile. We appreciate your time and expertise.</p>
+  </div>
+
+</main>
+
+<script>
+const ROLE = 'merchandiser';
+
+const ABILITIES = [
+  { id:'a1', label:'Information Processing', def:'Indicates how quickly a person is able to take in and process new information.' },
+  { id:'a2', label:'Abstract Reasoning',     def:'Indicates how well a person uses information to solve problems accurately.' },
+  { id:'a3', label:'Numeracy',               def:'Covers three key types of numerical situations reflecting the range of numeracy demands likely faced in a working environment.' },
+  { id:'a4', label:'Literacy',               def:'Measures ability to understand, evaluate, use and engage with written texts — focusing on fluency and comprehension, not spelling.' }
+];
+
+const TRAITS = [
+  { id:'t1',  label:'Self-efficacy',        def:'Confidence in one\'s own ability to complete tasks and achieve goals, even in challenging situations.' },
+  { id:'t2',  label:'Orderliness',          def:'A preference for structure, tidiness, and systematic approaches to work and environment.' },
+  { id:'t3',  label:'Dutifulness',          def:'A strong sense of obligation to fulfil commitments, follow rules, and meet expectations reliably.' },
+  { id:'t4',  label:'Achievement-Striving', def:'Drive to set high standards, work hard, and continuously push toward personal and professional goals.' },
+  { id:'t5',  label:'Self-Discipline',      def:'The ability to stay on task, resist distractions, and follow through without external supervision.' },
+  { id:'t6',  label:'Cautiousness',         def:'Tendency to think carefully before acting, minimising errors and avoiding impulsive decisions.' },
+  { id:'t7',  label:'Integrity',            def:'Consistent adherence to honesty, ethical principles, and transparency in all interactions.' },
+  { id:'t8',  label:'Emotional Stability',  def:'Ability to remain calm, composed, and rational when facing pressure, criticism, or setbacks.' },
+  { id:'t9',  label:'Agreeableness',        def:'A cooperative, warm, and considerate nature that supports positive relationships with others.' },
+  { id:'t10', label:'Resilience',           def:'Capacity to recover quickly from adversity, disappointment, or difficult circumstances.' },
+  { id:'t11', label:'Motivation to Learn',  def:'Genuine curiosity and drive to acquire new knowledge, skills, and capabilities over time.' },
+  { id:'t12', label:'Persuasion',           def:'Skill in influencing others\' opinions, decisions, or behaviours through compelling communication.' },
+  { id:'t13', label:'Planning',             def:'Ability to organise tasks, set priorities, and prepare ahead to achieve objectives efficiently.' },
+  { id:'t14', label:'Initiative',           def:'Proactively identifying and acting on opportunities or problems without waiting to be directed.' },
+  { id:'t15', label:'Multi-tasking',        def:'Capacity to manage several responsibilities or tasks simultaneously without losing quality.' },
+  { id:'t16', label:'Persistence',          def:'Staying committed to a task or goal despite obstacles, delays, or repeated setbacks.' },
+  { id:'t17', label:'Stress-Tolerance',     def:'Ability to perform effectively and maintain composure when under pressure or time constraints.' },
+  { id:'t18', label:'Adaptability',         def:'Flexibility in adjusting to changing conditions, priorities, or unexpected situations.' },
+  { id:'t19', label:'Curiosity',            def:'A natural desire to explore, question, and understand the world, products, and processes around them.' },
+  { id:'t20', label:'Outgoing',             def:'An energetic, sociable nature that makes it easy to initiate contact and engage with new people.' },
+  { id:'t21', label:'Concern for Others',   def:'Genuine interest in the wellbeing of colleagues, customers, and communities.' },
+  { id:'t22', label:'Sociability',          def:'Enjoyment of social interaction and ease in building rapport across diverse groups.' },
+  { id:'t23', label:'Teamwork',             def:'Willingness and ability to collaborate, share responsibilities, and support team goals.' },
+  { id:'t24', label:'Attention to Detail',  def:'Careful, thorough focus on accuracy and quality in completing tasks and spotting errors.' },
+  { id:'t25', label:'Energy',               def:'High drive and vitality — able to sustain effort and enthusiasm throughout demanding workdays.' },
+  { id:'t26', label:'Practical Thinker',    def:'Prefers tangible, hands-on problem solving and real-world, experience-based reasoning.' },
+  { id:'t27', label:'Analytical Thinker',   def:'Approaches problems through systematic data analysis, logic, and structured reasoning.' },
+  { id:'t28', label:'Conceptual Thinker',   def:'Comfortable with abstract ideas, patterns, and long-term, big-picture thinking.' },
+  { id:'t29', label:'Social Thinker',       def:'Processes situations through a people-centred lens — highly attuned to relationships and group dynamics.' }
+];
+
+let dragItem = null, dragPool = null;
+const placed = {};
+
+function buildChip(item, pool) {
+  const wrap = document.createElement('div');
+  wrap.className = 'chip-wrap';
+  const chip = document.createElement('div');
+  chip.className = 'chip';
+  chip.draggable = true;
+  chip.dataset.id = item.id;
+  chip.dataset.pool = pool;
+  const icon = document.createElement('div');
+  icon.className = 'drag-icon';
+  icon.innerHTML = `<svg viewBox="0 0 12 12" fill="currentColor" width="12" height="12"><circle cx="3.5" cy="3.5" r="1"/><circle cx="8.5" cy="3.5" r="1"/><circle cx="3.5" cy="8.5" r="1"/><circle cx="8.5" cy="8.5" r="1"/></svg>`;
+  const lbl = document.createElement('span');
+  lbl.textContent = item.label;
+  lbl.style.flex = '1';
+  const info = document.createElement('div');
+  info.className = 'chip-i';
+  info.textContent = 'i';
+  const tip = document.createElement('div');
+  tip.className = 'tip';
+  tip.textContent = item.def;
+  chip.appendChild(icon);
+  chip.appendChild(lbl);
+  chip.appendChild(info);
+  chip.appendChild(tip);
+  chip.addEventListener('dragstart', e => {
+    dragItem = chip; dragPool = pool;
+    setTimeout(() => chip.classList.add('dragging'), 0);
+    e.dataTransfer.effectAllowed = 'move';
+  });
+  chip.addEventListener('dragend', () => {
+    chip.classList.remove('dragging');
+    dragItem = null; dragPool = null;
+    document.querySelectorAll('.bucket').forEach(b => b.classList.remove('drag-over'));
+  });
+  wrap.appendChild(chip);
+  return wrap;
+}
+
+function initPool(poolId, items) {
+  const pool = document.getElementById(poolId);
+  items.forEach(item => pool.appendChild(buildChip(item, pool.dataset.pool)));
+}
+
+function setupBucket(bucket) {
+  bucket.addEventListener('dragover', e => {
+    if (!dragItem || bucket.dataset.pool !== dragPool) return;
+    e.preventDefault();
+    bucket.classList.add('drag-over');
+  });
+  bucket.addEventListener('dragleave', () => bucket.classList.remove('drag-over'));
+  bucket.addEventListener('drop', e => {
+    e.preventDefault();
+    bucket.classList.remove('drag-over');
+    if (!dragItem || bucket.dataset.pool !== dragPool) return;
+    const id = dragItem.dataset.id;
+    const wrap = dragItem.closest('.chip-wrap') || dragItem.parentNode;
+    const body = bucket.querySelector('.bkt-body');
+    const ph = body.querySelector('.bkt-ph');
+    if (ph) ph.remove();
+    body.appendChild(wrap);
+    dragItem.classList.add('in-bucket');
+    placed[id] = { bucket: bucket.dataset.bucket, pool: dragPool };
+    updateCounts();
+  });
+}
+
+function setupPool(pool) {
+  pool.addEventListener('dragover', e => {
+    if (!dragItem || pool.dataset.pool !== dragPool) return;
+    e.preventDefault();
+  });
+  pool.addEventListener('drop', e => {
+    e.preventDefault();
+    if (!dragItem || pool.dataset.pool !== dragPool) return;
+    const id = dragItem.dataset.id;
+    const wrap = dragItem.closest('.chip-wrap') || dragItem.parentNode;
+    const lbl = pool.querySelector('.pool-lbl');
+    pool.insertBefore(wrap, lbl ? lbl.nextSibling : pool.firstChild);
+    dragItem.classList.remove('in-bucket');
+    delete placed[id];
+    restorePlaceholders();
+    updateCounts();
+  });
+}
+
+function updateCounts() {
+  ['crucial','important','somewhat','not'].forEach(b => {
+    const body = document.getElementById(`bucket-trait-${b}`)?.querySelector('.bkt-body');
+    if (!body) return;
+    const cnt = body.querySelectorAll('.chip').length;
+    const el = document.getElementById(`cnt-${b}`);
+    if (!el) return;
+    const rangeSpan = el.querySelector('.bkt-range');
+    el.childNodes[0].textContent = cnt + ' ';
+    if (rangeSpan) el.appendChild(rangeSpan);
+    el.style.color = cnt >= 6 && cnt <= 10 ? '#166534' : cnt > 10 ? '#d97706' : '#94a3b8';
+  });
+}
+
+function restorePlaceholders() {
+  document.querySelectorAll('.bkt-body').forEach(body => {
+    if (!body.querySelector('.chip') && !body.querySelector('.bkt-ph')) {
+      const ph = document.createElement('div');
+      ph.className = 'bkt-ph';
+      ph.textContent = body.closest('.bucket').dataset.pool === 'ability' ? 'Drop here' : 'Drop here (ideally 6–10)';
+      body.appendChild(ph);
+    }
+  });
+}
+
+function validateForm() {
+  let ok = true;
+  [['f-name','sme-name'],['f-role','sme-role'],['f-company','sme-company'],
+   ['f-q1','q1'],['f-q2','q2'],['f-q3','q3']
+  ].forEach(([fid, iid]) => {
+    const f = document.getElementById(fid);
+    const v = document.getElementById(iid).value.trim();
+    f.classList.toggle('has-err', !v);
+    if (!v) ok = false;
+  });
+  const aw = document.getElementById('warn-ability');
+  const allA = ABILITIES.every(a => placed[a.id]);
+  aw.style.display = allA ? 'none' : 'block';
+  if (!allA) ok = false;
+  const tw = document.getElementById('warn-trait');
+  const allT = TRAITS.every(t => placed[t.id]);
+  tw.style.display = allT ? 'none' : 'block';
+  if (!allT) ok = false;
+  return ok;
+}
+
+function submitForm() {
+  if (!validateForm()) {
+    const first = document.querySelector('.has-err, .limit-warn[style*="block"]');
+    if (first) first.scrollIntoView({ behavior:'smooth', block:'center' });
+    return;
+  }
+  const aRes = {crucial:[],important:[],somewhat:[],not:[]};
+  const tRes = {crucial:[],important:[],somewhat:[],not:[]};
+  Object.entries(placed).forEach(([id,{bucket,pool}]) => {
+    const item = pool==='ability' ? ABILITIES.find(a=>a.id===id) : TRAITS.find(t=>t.id===id);
+    if (!item) return;
+    (pool==='ability' ? aRes : tRes)[bucket].push(item.label);
+  });
+  const data = {
+    role: ROLE,
+    submittedAt: new Date().toISOString(),
+    sme: {
+      name:    document.getElementById('sme-name').value.trim(),
+      role:    document.getElementById('sme-role').value.trim(),
+      company: document.getElementById('sme-company').value.trim()
+    },
+    qualitative: {
+      bestCandidate:  document.getElementById('q1').value.trim(),
+      worstCandidate: document.getElementById('q2').value.trim(),
+      nonNegotiables: document.getElementById('q3').value.trim()
+    },
+    abilities: aRes,
+    traits: tRes
+  };
+
+  // ── GOOGLE SHEETS SUBMIT ──
+  const SCRIPT_URL = 'https://script.google.com/a/macros/jobjack.co.za/s/AKfycbwJi86wjwSPQKesBcey4CtPSRkm4Y5U-agZiMgX_qtSTOqS-6vgJ95rrSg7MP_3Iu0K5A/exec';
+  if (SCRIPT_URL !== 'PASTE_YOUR_SCRIPT_URL_HERE') {
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).catch(() => {});
+  }
+
+  // also download local JSON backup
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url;
+  a.download = `jobjack_${ROLE}_${(data.sme.name||'sme').replace(/\s+/g,'_').toLowerCase()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  document.getElementById('mainContent').style.display = 'none';
+  document.getElementById('successScreen').style.display = 'block';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initPool('pool-ability', ABILITIES);
+  initPool('pool-trait', TRAITS);
+  document.querySelectorAll('.bucket').forEach(setupBucket);
+  document.querySelectorAll('.pool').forEach(setupPool);
+});
+</script>
+</body>
+</html>
